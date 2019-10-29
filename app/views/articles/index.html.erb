@@ -1,8 +1,17 @@
-<h1>ken's blog</h1>
-<div>投稿一覧</div>
-<ul>
-<% @articles.each do |article| %>
-    <li><%= link_to article.title,article %></li>
-<% end %>
-</ul>
+<h1>
+    <div class="col-sm-3 mx-auto">ken's blog</div>
+</h1>
+<div class="col-sm-2 mx-auto">投稿一覧</div>
+
+<div class="container">
+    <div class="row">
+        <% @articles.each do |article| %>
+            <div class="card col-sm-7 mb-3 mx-auto ">
+                <%= image_tag article.image.thumb30.url %>
+                <%= link_to article.title,article %>
+            </div>
+        <% end %>
+    </div>
+</div>
+<div class="col-sm-2 mx-auto"><%= paginate @articles %></div>
 

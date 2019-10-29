@@ -1,6 +1,6 @@
 class ArticlesController < ApplicationController
     def index
-        @articles = Article.order(created_at: :desc)
+        @articles = Article.order(created_at: :desc).page(params[:page]).per(10)
     end
     
     def show
@@ -51,7 +51,7 @@ class ArticlesController < ApplicationController
 private
 
 def article_params
- params.require(:article).permit(:title ,:body)   
+ params.require(:article).permit(:title ,:body ,:image)   
 end
 
 
