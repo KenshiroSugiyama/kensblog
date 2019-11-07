@@ -1,8 +1,29 @@
 <h1><%= @article.title %> </h1>
-<div class="card border-light bg-light mb-3">
+<div class="card border-light bg-white mb-3">
     <%= sanitize @article.body, tags: %w(h1 h2 h3 h4 h5 h6 ul ol li p a img table tr td em br strong div), attributes:  %w(id class href) %>
-    <%= image_tag @article.image.url%>
+    <% if @article.image?  %>
+        <%= image_tag @article.image.url%>
+    <% end %>
 </div>
-
+<% if current_user.try(:admin?) %>
 <%= link_to '編集', edit_article_path(@article), class:'btn btn-info'%>
 <%= link_to '削除', @article, method: :delete, data: { confirm: '本当に削除してよろしいですか？' } , class:'btn btn-danger' %>
+<% end %>
+
+<h2>コメント一覧</h2>
+<% @comments.each do |c| %>
+  <div>
+    投稿者：<%= c.user_name %>
+    内容：<%= c.content %>
+    <%= link_to "削除", article_comment_path(article_id: @article.id , id: c.id), method: :delete %>
+  </div>
+<% end %>
+
+<%= form_for [@article, @comment] do |f| %>
+  <div class="form-group">
+      <%= f.text_field :content, class:'control-label' %>
+  </div>
+  <%= f.submit 'コメントする', class: "btn btn-primary"  %>
+<% end %>
+
+

@@ -1,14 +1,21 @@
 class ArticlesController < ApplicationController
+    before_action :sign_in_required
+    
     def index
         @articles = Article.order(created_at: :desc).page(params[:page]).per(10)
     end
     
     def show
         @article = Article.find(params[:id])
+        @comments = @article.comments
+        @comment = Comment.new
+        @comment.user_id = current_user.id
+        @comment.user_name = current_user.name
+
     end
     
     def new
-        @article=Article.new
+        @article= Article.new
     end
     
     def edit
@@ -16,7 +23,7 @@ class ArticlesController < ApplicationController
     end
     
     def create
-        @article=Article.new(article_params)
+        @article=current_user.articles.build(article_params)
         
          if @article.save
             flash[:success] = '記事 が正常に投稿されました'
@@ -41,7 +48,7 @@ class ArticlesController < ApplicationController
 
     def destroy
          @article = Article.find(params[:id])
-          @article.destroy
+         @article.destroy
           
         flash[:success] = '記事 は正常に削除されました'
         redirect_to articles_url
@@ -51,7 +58,7 @@ class ArticlesController < ApplicationController
 private
 
 def article_params
- params.require(:article).permit(:title ,:body ,:image)   
+ params.require(:article).permit(:title ,:body ,:image, :user_id , :article_id)   
 end
 
 
