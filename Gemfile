@@ -38,6 +38,7 @@ gem 'bootsnap', '>= 1.1.0', require: false
 
 gem 'kaminari'
 gem 'carrierwave'
+gem "aws-sdk-s3", require: false
 gem 'rmagick'
 gem 'trix' #textediter
 gem 'devise'
