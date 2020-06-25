@@ -9,9 +9,9 @@
     <!-- メニュー項目 -->
     <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
       <ul class="navbar-nav">
-        <% if current_user.try(:admin?) %>
+        <%# <% if current_user.try(:admin?) %> 
           <li class="nav-item"><%= link_to  '新規投稿', new_article_path, class: 'nav-link' %></li>
-        <% end %>
+        <%# <% end %> 
           <li class="nav-item"><%= link_to  'ユーザー設定', edit_user_registration_path, class: 'nav-link' %></li>
           <li class="nav-item"><%= link_to  'logout', logout_path , class: 'nav-link' %></li>
       </ul>
