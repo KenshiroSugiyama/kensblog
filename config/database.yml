@@ -52,6 +52,6 @@ production:
   adapter: postgresql
   encoding: unicode
   pool: 5
-  database: blog_production
-  username: blog
-  password: <%= ENV['BLOG_DATABASE_PASSWORD'] %>
+  # database: blog_production
+  # username: blog
+  # password: <%= ENV['BLOG_DATABASE_PASSWORD'] %>
