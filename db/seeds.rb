@@ -30,13 +30,12 @@ end
 
 comment = Comment.second
 unless comment
-    Comment.create(user_id: 2,article_id: "3",content: "comment-test",user_name: "ken")
-    Comment.create(user_id: 2,article_id: "9",content: "comment-test",user_name: "完太郎")
-    Comment.create(user_id: 5,article_id: "9",content: "comment-test-reply",user_name: "広大")
-    Comment.create(user_id: 2,article_id: "8",content: "comment-test",user_name: "kazuma")
-    Comment.create(user_id: 4,article_id: "8",content: "comment-test",user_name: "ken")
-    Comment.create(user_id: 5,article_id: "8",content: "comment-test-reply",user_name: "ken")
-    Comment.create(user_id: 6,article_id: "7",content: "comment-test",user_name: "ken")
-    Comment.create(user_id: 7,article_id: "7",content: "comment-test",user_name: "完太郎")
-    Comment.create(user_id: 5,article_id: "7",content: "comment-test-reply",user_name: "kazuma")
+    Comment.create(user_id: 2,article_id: "3",content: "comment-test")
+    Comment.create(user_id: 2,article_id: "9",content: "comment-test",user_name: "ken")
+    Comment.create(user_id: 5,article_id: "9",content: "comment-test-reply",user_name: "完太郎")
+    Comment.create(user_id: 2,article_id: "8",content: "comment-test",user_name: "ken")
+    Comment.create(user_id: 4,article_id: "8",content: "comment-test",user_name: "広大")
+    Comment.create(user_id: 5,article_id: "8",content: "comment-test-reply",user_name: "完太郎")
+    Comment.create(user_id: 2,article_id: "7",content: "comment-test",user_name: "ken")
+    
 end
